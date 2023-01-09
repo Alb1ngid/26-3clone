@@ -1,0 +1,20 @@
+git init инициализирует проект в гите
+git remote add origin 'ссылка' связывает ваш проект с репозиторием
+create .gitignore - игнорирует файлы
+git add . добавляет все файлы для пуша в гит
+git commit -m 'ваш коммит' - сохраняет изменения и дает точку
+git push origin master/main загружает ваш проект в репозиторий
+
+git status проверяет что происходит с проектом
+git clone 'ссылка на репозиторий' - клонирует проект
+git remote remove origin - отвязывает проект от гита
+
+
+git config --global user.name/email
+
+сохраняет данные аккаунта гита на ноуте
+
+
+git add .
+git commit -m ''
+git push origin master
