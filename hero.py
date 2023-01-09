@@ -8,79 +8,78 @@ class SuperHero:
         self.health_points = health_points
         self.catchphrase = catchphrase
 
-    def get_name(self):
-        return f'Имя героя:{self.name}'
+    def nam(self):
+        return f'Name: {self.name},'
 
-    def double_health(self):
-        self.health_points *= 2
-        return f'Удвоенное здоровье:{self.health_points}'
+    def hp(self):
+        return f'Здоровье нашего героя: {self.health_points*2}, '
 
     def __str__(self):
-        return f'Прозвище:{self.nickname},\n' \
-               f'Суперспособность:{self.superpower},\n' \
-               f'Текущее здоровье:{self.health_points}'
+        return f'nickname: {self.nickname}, superpower: {self.superpower}, health: {self.health_points},'
 
     def __len__(self):
-        len({self.catchphrase})
+        return f'длина фразы: {len(self.catchphrase)}'
 
+ktoto = SuperHero(name='шелли', nickname='шелька', superpower='ульт', health_points=500, catchphrase='haha')
+print(ktoto.nam(), ktoto.hp(), ktoto, f'длина фразы: {len(ktoto.catchphrase)}')
 
-hero = SuperHero('Tick', 'Boss', 'speed', 100, 'go on!')
-print(hero.get_name())
-print(hero.double_health())
-print(hero)
-print(len(hero.catchphrase))
+class Hero(SuperHero):
 
+    people = 'people'
 
-class Sups(SuperHero):
-    def __init__(self, name, nickname, superpower, health_points, catchphrase, damage=0, fly=False):
+    def __init__(self, name, nickname, superpower, health_points, catchphrase, damage=False, fly=False):
         super().__init__(name, nickname, superpower, health_points, catchphrase)
         self.damage = damage
         self.fly = fly
 
-    def double_health(self):
-        print(f'Здоровье Аватара x2: {self.health_points * self.health_points}')
+    def hp(self):
         self.fly = True
+        print(f'Здоровье нашего героя: {self.health_points ** 2}')
 
-    def crit_hero(self):
-        print(f'Урон Аватара x2: {self.damage * self.damage}')
+    def fly_sky(self):
+        print(f'fly in the {self.fly}_phrase')
 
-    def fly_phrase(self):
-        if self.fly_phrase:
-            print('fly in the True_phrase')
+    # def crit(self):
+    #     return self.damage ** 2
+
+
+class SecondHero(SuperHero):
+
+    people = 'people'
+
+    def __init__(self, name, nickname, superpower, health_points, catchphrase, damage=False, fly=False):
+        super().__init__(name, nickname, superpower, health_points, catchphrase)
+        self.damage = damage
+        self.fly = fly
 
     def hp(self):
-        print(f'Здоровье Тайм Мастера x2: {self.health_points *self.damage}')
         self.fly = True
+        print(f'Здоровье нашего героя: {self.health_points ** 2}')
 
-    def critt(self):
-        print(f'Урон Тайм Мастера x2: {self.damage * self.damage}')
+    def fly_sky(self):
+        print(f'fly in the {self.fly}_phrase')
 
-    def fly_phras(self):
-        if self.fly_phrase:
-            print('fly in the True_phrase')
+thor = Hero('thor', 'bog', 'grom', 200, 'хз', damage=300)
+cap = SecondHero('cap', 'pon', 'hello', 150, 'ladno', damage=100)
 
-    def double_hp(self):
-        print(f'Здоровье Бумa x2: {self.health_points * self.health_points}')
-        self.fly = True
+thor.hp()
+thor.fly_sky()
+cap.hp()
+cap.fly_sky()
 
-    def crit(self):
-        print(f'Урон Бума x2: {self.damage * self.damage}')
 
-    def gen_x(self):
+class Villian(SecondHero):
+
+    def __init__(self,  name, nickname, superpower, health_points, catchphrase):
+        super().__init__( name, nickname, superpower, health_points, catchphrase)
+        SuperHero.people = 'monster'
+
+    def gen_X(self):
         pass
 
+    def crit(self, hero):
+        return hero.damage ** 2
 
-first_hero = Sups('Aang', 'Avatar', 'elements', 100, 'I"m an Avatar!', 100)
-second_hero = Sups('Time Master', 'time', 100, 'I"ve no Time!', 100)
-villian = Sups('Cosmo', 'Boom', 'Bombs', 100, 'uhaha!', 50)
-
-first_hero.double_health()
-print(first_hero.crit_hero())
-print(first_hero.fly_phrase())
-
-print(second_hero.hp())
-print(second_hero.critt())
-print(second_hero.fly_phras())
-
-print(villian.double_hp())
-print(villian.crit())
+tanos = Villian('tanos', 'tanka', 'kamni', 900, 'pon')
+print(Villian.crit(tanos, thor))
+print(Villian.crit(tanos, cap))
