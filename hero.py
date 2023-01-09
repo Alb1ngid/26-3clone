@@ -83,3 +83,5 @@ class Villian(SecondHero):
 tanos = Villian('tanos', 'tanka', 'kamni', 900, 'pon')
 print(Villian.crit(tanos, thor))
 print(Villian.crit(tanos, cap))
+
+# 10
